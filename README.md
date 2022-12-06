@@ -5,9 +5,10 @@
 
 *To run the pipeline:
 
-pip install git+ https://github.com/JacksonGroupLTRI/ImcPQ.git
+pip install 
+git+ https://github.com/JacksonGroupLTRI/ImcPQ.git
 
-The run ImcPQ_Run module.
+Then run ImcPQ_Run module.
 
 
 
