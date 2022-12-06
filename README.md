@@ -1,6 +1,6 @@
 # ImcPQ
 
-### ImcPQ is a pipeline for IMC multiplexed image analysis (Image processing and segmentation). 
+### ImcPQ is a pipeline for IMC multiplexed image analysis. 
 
 
 * Refer to [Instructions](https://github.com/JacksonGroupLTRI/ImcPQ/blob/master/INSTRUCTIONS.ipynb) for how to use this pipline.
