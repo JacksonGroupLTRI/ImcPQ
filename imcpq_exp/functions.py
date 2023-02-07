@@ -9,8 +9,8 @@ def get_panel(start_dir, panel_df):
             seq_filename = os.path.join(start_dir, file)
             break
     seq = pd.read_csv(seq_filename, header=None)
-    seq = seq.rename(columns={0: "Metal_Tag"})
-    res = pd.merge(seq, panel_df, how="inner", on=["Metal_Tag"])
+    seq = seq.rename(columns={0: "MetalTag"})
+    res = pd.merge(seq, panel_df, how="inner", on=["MetalTag"])
     panel = list(res["Target"])
     return panel
 def measure(cell, image, mask, markers, sample):
@@ -50,7 +50,6 @@ def df_measured(start_dir, sample_df, panel):
     for file in os.listdir(start_dir):
         if '_full.tiff' in file:
             full_tiff = os.path.join(start_dir, file)
-            # print(full_tiff)
             imc_tiff = tifffile.TiffFile(full_tiff)
             image = imc_tiff.asarray()
             mask_file_name=file.replace('_full', '_IA_mask')
