@@ -9,7 +9,7 @@ pip install git+ https://github.com/JacksonGroupLTRI/ImcPQ.git
 
 Then run ImcPQ_Run module. It will output Expressions as csv file including single cell data. 
 
-You can install requirements when in rood directory of the pipeline by: 
+You can install requirements when in root directory of the pipeline by: 
 
 pip install -r requirements.txt
 
