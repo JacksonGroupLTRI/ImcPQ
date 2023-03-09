@@ -9,8 +9,8 @@ def get_panel(start_dir, panel_df):
             seq_filename = os.path.join(start_dir, file)
             break
     seq = pd.read_csv(seq_filename, header=None)
-    seq = seq.rename(columns={0: "Metal_Tag"})
-    res = pd.merge(seq, panel_df, how="inner", on=["Metal_Tag"])
+    seq = seq.rename(columns={0: "MetalTag"})
+    res = pd.merge(seq, panel_df, how="inner", on=["MetalTag"])
     panel = list(res["Target"])
     return panel
 def measure(cell, image, mask, markers, sample):
