@@ -5,7 +5,7 @@
 
 *To run the pipeline:
 
-pip install git+ https://github.com/JacksonGroupLTRI/ImcPQ.git
+pip install git+https://github.com/JacksonGroupLTRI/ImcPQ.git
 
 Then run ImcPQ_Run module. It will output Expressions as csv file including single cell data. 
 

@@ -13,7 +13,7 @@ def get_panel(start_dir, panel_df):
     res = pd.merge(seq, panel_df, how="inner", on=["MetalTag"])
     panel = list(res["Target"])
     return panel
-def measure(cell, image, mask, markers, sample):
+def measure(cell, image, mask, markers, sample, description):
     cell_y = mask == cell
     y = np.where(mask == cell)[0].mean()
     x = np.where(mask == cell)[1].mean()
@@ -21,12 +21,12 @@ def measure(cell, image, mask, markers, sample):
     y_max = np.where(mask == cell)[0].max()
     x_max = np.where(mask == cell)[1].max()
     measuredvalue = image[:,cell_y].mean(1)
-    cols = markers + ['sample', 'cell_id', 'x', 'y', 'x_max', 'y_max', 'area']
-    values = list(measuredvalue)  + [sample, cell, x, y, x_max, y_max, area]
+    cols = markers + ['sample', 'cell_id', 'x', 'y', 'x_max', 'y_max', 'area', 'Description']
+    values = list(measuredvalue)  + [sample, cell, x, y, x_max, y_max, area, description]
     df = pd.DataFrame(columns=cols)
     df.loc[len(df)] = values
     return df
-def make_cell(mask_tiff, full_tiff, sample, panel):
+def make_cell(mask_tiff, full_tiff, sample, panel, description):
     mtx = []
     mask = mask_tiff
     
@@ -35,15 +35,15 @@ def make_cell(mask_tiff, full_tiff, sample, panel):
     image = full_tiff
     assert mask.shape[0] == image.shape[1]
     assert mask.shape[1] == image.shape[2]
-    cell_ids = np.unique(np.reshape(mask, -1))
+    cell_ids = np.ungiique(np.reshape(mask, -1))
     cell_ids = cell_ids[cell_ids != 0]
     for cell in cell_ids:
         mtx.append(
-            measure(cell, image, mask, panel, sample)
+            measure(cell, image, mask, panel, sample, description)
         )
     return mtx
 
-def df_measured(start_dir, sample_df, panel):
+def df_measured(start_dir, sample_df, panel, description):
     mtxs = []
     excluded_images = []
      
@@ -61,7 +61,8 @@ def df_measured(start_dir, sample_df, panel):
             mask = tifffile.imread(mask_tiff)
             row = sample_df.loc[sample_df['TiffName'] == file]
             sample = row['SampleName'].iloc[0]
-            cells = make_cell(mask, image, sample, panel)
+            description = row['Description'].iloc[0]
+            cells = make_cell(mask, image, sample, panel, description)
             if len(cells) > 0:
                 mtxs.append(pd.concat(cells))
     df_measured = pd.concat(mtxs)
