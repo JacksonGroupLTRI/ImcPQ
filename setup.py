@@ -11,11 +11,11 @@ setuptools.setup(
     description='Installation of Package',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/SomiAfiuni/ImcpQ_package.git',
-    project_urls = {
+    url='https://github.com/SomiAfiuni/ImcpQ.git',
+    project_urls={
         "Bug Tracker": "https://github.com/SomiAfiuni/ImcpQ_package/issues"
     },
     license='MIT',
     packages=['imcpq_exp'],
-    install_requires=['pandas','tifffile','numpy'],
+    install_requires=['pandas', 'tifffile', 'numpy'],
 )
