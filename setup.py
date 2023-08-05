@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url='https://github.com/SomiAfiuni/ImcpQ.git',
     project_urls={
-        "Bug Tracker": "https://github.com/SomiAfiuni/ImcpQ_package/issues"
+        "Bug Tracker": "https://github.com/SomiAfiuni/ImcpQ/issues"
     },
     license='MIT',
     packages=['imcpq_exp'],
