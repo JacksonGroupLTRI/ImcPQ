@@ -54,8 +54,6 @@ def make_cell(mask_tiff, full_tiff, sample, panel):
 
 
 def df_measured(start_dir, sample_df, panel):
-    mtxs = []
-    excluded_images = []
     for mcd in sample_df['MCDFileName'].unique():
         mtxs = []
         excluded_images = []
@@ -75,12 +73,12 @@ def df_measured(start_dir, sample_df, panel):
                 cells = make_cell(mask, image, sample, panel)
                 if len(cells) > 0:
                     mtxs.append(pd.concat(cells))
-    df_measured = pd.concat(mtxs)
-    df_measured = df_measured.reset_index()
-    df_measured = df_measured.drop(['index'], axis=1)
-    measurement_filename = mcd+"_measurements.csv"
-    output_measurments_file = os.path.join(
-        start_dir, 'analysis', 'output', measurement_filename)
+        df_measured = pd.concat(mtxs)
+        df_measured = df_measured.reset_index()
+        df_measured = df_measured.drop(['index'], axis=1)
+        measurement_filename = mcd+"_measurements.csv"
+        output_measurments_file = os.path.join(
+            start_dir, 'analysis', 'output', measurement_filename)
     output_path = os.path.join(start_dir, 'analysis', 'output')
     df_measured.to_csv(output_measurments_file, index=False)
     full_measuremants(output_path)
