@@ -60,8 +60,8 @@ def df_measured(start_dir, sample_df, panel):
         mtxs = []
         excluded_images = []
         for file in sample_df[sample_df['MCDFileName'] == mcd]['TiffName']:
+            full_tiff = os.path.join(start_dir, file)
             if os.path.isfile(full_tiff):
-                full_tiff = os.path.join(start_dir, file)
                 imc_tiff = tifffile.TiffFile(full_tiff)
                 image = imc_tiff.asarray()
                 mask_file_name = file.replace('_full', '_IA_mask')
@@ -81,7 +81,9 @@ def df_measured(start_dir, sample_df, panel):
     measurement_filename = mcd+"_measurements.csv"
     output_measurments_file = os.path.join(
         start_dir, 'analysis', 'output', measurement_filename)
+    output_path = os.path.join(start_dir, 'analysis', 'output')
     df_measured.to_csv(output_measurments_file, index=False)
+    full_measuremants(output_path)
 
 
 def full_measuremants(output_path):
