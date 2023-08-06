@@ -79,9 +79,12 @@ def df_measured(start_dir, sample_df, panel):
         measurement_filename = mcd+"_measurements.csv"
         output_measurments_file = os.path.join(
             start_dir, 'analysis', 'output', measurement_filename)
+        df_measured.to_csv(output_measurments_file, index=False)
+        print(mcd + " generated")
+
     output_path = os.path.join(start_dir, 'analysis', 'output')
-    df_measured.to_csv(output_measurments_file, index=False)
     full_measuremants(output_path)
+    print(output_path + " Process Completed")
 
 
 def full_measuremants(output_path):
