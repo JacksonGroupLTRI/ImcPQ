@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 Contact: Somi Afiuni - safiuni@lunenfeld.ca
 
-Please Cite: 
+Cite: 
 Dervovic, D., Malik, A.A., Chen, E.L.Y., Narimatsu, M., Adler, N., Afiuni-Zadeh, S., et al. In vivo CRISPR screens reveal Serpinb9 and Adam2 as regulators of immune therapy response in lung cancer. Nat Commun 14, 3150 (2023). https://doi.org/10.1038/s41467-023-38841-7
 
 
