@@ -1,5 +1,7 @@
 # ImcPQ
 
+**NOTE**: As of March 2026, this repository has been archived. An up-to-date processing pipeline for IMC datasets can be found here: https://github.com/camlab-bioml/steinbock_snakemake. 
+
 ### ImcPQ is a modular pipeline for multiplexed image analysis of imaging mass cytometry (IMC). 
 
 
